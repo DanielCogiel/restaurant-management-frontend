@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -6,26 +7,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  headerItems: {url: string, label: string}[] = [
+  headerItems: {url: string, label: string} [] = [
     {
-      url: '',
+      url: '/customers',
       label: 'Customers'
     },
     {
-      url: '',
+      url: '/orders',
       label: 'Orders'
     },
     {
-      url: '',
+      url: '/meals',
       label: 'Meals'
     },
     {
-      url: '',
+      url: '/ingredients',
       label: 'Ingredients'
     }
   ]
-
+  constructor(private router: Router) {}
   navigateTo(url: string) {
-    console.log(url);
+    this.router.navigate([url]);
   }
 }
