@@ -1,0 +1,5 @@
+<div class="header flex align-items-center justify-content-center p-3">
+  <div class="flex align-items-center justify-content-between w-8">
+    <button *ngFor="let item of headerItems" pButton (click)="navigateTo(item.url)">{{item.label}}</button>
+  </div>
+</div>
