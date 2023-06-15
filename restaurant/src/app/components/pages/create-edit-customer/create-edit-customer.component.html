@@ -1,0 +1,15 @@
+<form class="formgrid grid" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <div class="field col-12 md:col-5">
+    <label for="name">Name</label>
+    <input id="name" class="w-full" type="text" pInputText formControlName="name">
+  </div>
+  <div class="field col-12 md:col-5">
+    <label for="surname">Surname</label>
+    <input id="surname" class="w-full" type="text" pInputText formControlName="surname">
+  </div>
+  <div class="field col-12 md:col-2">
+    <label for="table_number">Table number</label>
+    <input id="table_number" class="w-full" type="number" pInputText formControlName="table_number">
+  </div>
+  <button class="p-button-raised ml-2" type="submit" pButton>{{isEdit ? 'Edit customer' : 'Add customer'}}</button>
+</form>

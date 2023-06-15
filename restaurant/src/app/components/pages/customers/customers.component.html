@@ -1,7 +1,11 @@
-<p-card styleClass="m-6">
+
+  <div class="flex align-items-center justify-content-between">
+    <h1>Customers</h1>
+    <button (click)="goToCreatePage()" pButton pRipple>Create a new customer</button>
+  </div>
   <p-table
     selectionMode="single"
-    [value]="customers"
+    [value]="elements"
   >
     <ng-template pTemplate="header">
       <tr>
@@ -9,15 +13,32 @@
         <th>Name</th>
         <th>Surname</th>
         <th>Table number</th>
+        <th style="width: 5rem"></th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-customer>
-      <tr>
+      <tr (click)="goToSpecificCustomer(customer.id)">
         <td>{{customer.id}}</td>
         <td>{{customer.name}}</td>
         <td>{{customer.surname}}</td>
         <td>{{customer.table_number}}</td>
+        <td class="flex gap-2">
+          <button
+            type="button"
+            pButton
+            pRipple
+            icon="pi pi-pencil"
+            (click)="goToEditPage($event, customer.id)"
+          ></button>
+          <button
+            type="button"
+            pButton
+            pRipple
+            icon="pi pi-trash"
+            (click)="deleteElement($event, customer.id)"
+          ></button>
+        </td>
       </tr>
     </ng-template>
   </p-table>
-</p-card>
+

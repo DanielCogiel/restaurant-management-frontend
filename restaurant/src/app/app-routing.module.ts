@@ -4,6 +4,8 @@ import {CustomersComponent} from "./components/pages/customers/customers.compone
 import {OrdersComponent} from "./components/pages/orders/orders.component";
 import {MealsComponent} from "./components/pages/meals/meals.component";
 import {IngredientsComponent} from "./components/pages/ingredients/ingredients.component";
+import {CreateEditCustomerComponent} from "./components/pages/create-edit-customer/create-edit-customer.component";
+import {ViewCustomerComponent} from "./components/pages/view-customer/view-customer.component";
 
 const routes: Routes = [
   {
@@ -13,7 +15,24 @@ const routes: Routes = [
   },
   {
     path: 'customers',
-    component: CustomersComponent
+    children: [
+      {
+        path: '',
+        component: CustomersComponent,
+      },
+      {
+        path: 'create',
+        component: CreateEditCustomerComponent
+      },
+      {
+        path: ':id/edit',
+        component: CreateEditCustomerComponent
+      },
+      {
+        path: ':id',
+        component: ViewCustomerComponent
+      }
+    ]
   },
   {
     path: 'orders',
