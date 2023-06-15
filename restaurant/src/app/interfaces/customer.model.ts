@@ -5,6 +5,6 @@ interface CustomerModel {
   name: string,
   surname: string,
   table_number: number,
-  orders: OrderModel []
+  orders?: OrderModel []
 }
 export default CustomerModel;

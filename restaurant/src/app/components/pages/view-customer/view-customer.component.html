@@ -1,0 +1,15 @@
+<ng-container *ngIf="customer; else noCustomerTemplate" >
+  <p><strong>ID:</strong> {{customer.id}}</p>
+  <p><strong>Name:</strong> {{customer.name}}</p>
+  <p><strong>Surname:</strong> {{customer.surname}}</p>
+  <p><strong>Table number:</strong> {{customer.table_number}}</p>
+  <p><strong>Orders:</strong></p>
+  <ul>
+    <li *ngFor="let order of customer.orders">
+      ID: {{order.id}}
+    </li>
+  </ul>
+</ng-container>
+<ng-template #noCustomerTemplate>
+  <p>No such customer exists.</p>
+</ng-template>
