@@ -1,0 +1,18 @@
+<form class="formgrid grid" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <div class="field col-12 md:col-6">
+    <label for="userId">Customer</label>
+    <select id="userId" class="w-full" pInputText formControlName="userId">
+      <option *ngFor="let customer of customers" [value]="customer.id" >{{customer.name + ' ' +  customer.surname}}</option>
+    </select>
+  </div>
+  <div class="field col-12 md:col-6">
+    <label for="meals">Meals</label>
+    <p-multiSelect
+      [options]="meals"
+      optionLabel="name"
+      styleClass="w-full"
+      formControlName="meals"
+      inputId="meals"></p-multiSelect>
+  </div>
+  <button class="p-button-raised ml-2" type="submit" pButton>{{isEdit ? 'Edit order' : 'Add order'}}</button>
+</form>

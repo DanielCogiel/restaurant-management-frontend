@@ -14,7 +14,7 @@ export abstract class Crud<T> {
   goToCreatePage(): void {
     this._router.navigate(['create'], {relativeTo: this._activatedRoute});
   }
-  goToSpecificCustomer(id: number) {
+  goToSpecificElement(id: number) {
     this._router.navigate([`${id}`], {relativeTo: this._activatedRoute});
   }
 }

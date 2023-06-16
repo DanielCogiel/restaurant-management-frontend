@@ -1,0 +1,13 @@
+<ng-container *ngIf="order; else noOrderTemplate" >
+  <p><strong>ID:</strong> {{order.id}}</p>
+  <p><strong>Customer:</strong> {{order.customer?.name + ' ' + order.customer?.surname + ', table: ' + order.customer?.table_number}}</p>
+  <p><strong>Meals:</strong></p>
+  <ul>
+    <li *ngFor="let meal of order.meals">
+      <strong>ID:</strong> {{meal.id}}, <strong>Name:</strong> {{meal.name}}
+    </li>
+  </ul>
+</ng-container>
+<ng-template #noOrderTemplate>
+  <p>No such order exists.</p>
+</ng-template>

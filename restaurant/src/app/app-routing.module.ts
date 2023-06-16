@@ -6,6 +6,8 @@ import {MealsComponent} from "./components/pages/meals/meals.component";
 import {IngredientsComponent} from "./components/pages/ingredients/ingredients.component";
 import {CreateEditCustomerComponent} from "./components/pages/create-edit-customer/create-edit-customer.component";
 import {ViewCustomerComponent} from "./components/pages/view-customer/view-customer.component";
+import {CreateEditOrderComponent} from "./components/pages/create-edit-order/create-edit-order.component";
+import {ViewOrderComponent} from "./components/pages/view-order/view-order.component";
 
 const routes: Routes = [
   {
@@ -36,7 +38,24 @@ const routes: Routes = [
   },
   {
     path: 'orders',
-    component: OrdersComponent
+    children: [
+      {
+        path: '',
+        component: OrdersComponent
+      },
+      {
+        path: 'create',
+        component: CreateEditOrderComponent
+      },
+      {
+        path: ':id/edit',
+        component: CreateEditOrderComponent
+      },
+      {
+        path: ':id',
+        component: ViewOrderComponent
+      }
+    ]
   },
   {
     path: 'meals',

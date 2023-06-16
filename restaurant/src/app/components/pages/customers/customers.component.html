@@ -17,7 +17,7 @@
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-customer>
-      <tr (click)="goToSpecificCustomer(customer.id)">
+      <tr (click)="goToSpecificElement(customer.id)">
         <td>{{customer.id}}</td>
         <td>{{customer.name}}</td>
         <td>{{customer.surname}}</td>
