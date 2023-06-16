@@ -24,10 +24,12 @@ export class ViewCustomerComponent {
         table_number: 3,
         orders: [
           {
-            id: 1
+            id: 1,
+            meals: []
           },
           {
-            id: 2
+            id: 2,
+            meals: []
           }
         ]
       }

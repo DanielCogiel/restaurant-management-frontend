@@ -17,6 +17,10 @@ import { CreateEditCustomerComponent } from './components/pages/create-edit-cust
 import {InputTextModule} from "primeng/inputtext";
 import {ReactiveFormsModule} from "@angular/forms";
 import { ViewCustomerComponent } from './components/pages/view-customer/view-customer.component';
+import { CreateEditOrderComponent } from './components/pages/create-edit-order/create-edit-order.component';
+import { ViewOrderComponent } from './components/pages/view-order/view-order.component';
+import {MultiSelectModule} from "primeng/multiselect";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +30,9 @@ import { ViewCustomerComponent } from './components/pages/view-customer/view-cus
     CustomersComponent,
     OrdersComponent,
     CreateEditCustomerComponent,
-    ViewCustomerComponent
+    ViewCustomerComponent,
+    CreateEditOrderComponent,
+    ViewOrderComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +43,9 @@ import { ViewCustomerComponent } from './components/pages/view-customer/view-cus
     RippleModule,
     InputTextModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MultiSelectModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
