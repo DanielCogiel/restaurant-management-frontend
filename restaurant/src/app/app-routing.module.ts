@@ -8,10 +8,10 @@ import {CreateEditCustomerComponent} from "./components/pages/create-edit/create
 import {ViewCustomerComponent} from "./components/pages/view/view-customer/view-customer.component";
 import {CreateEditOrderComponent} from "./components/pages/create-edit/create-edit-order/create-edit-order.component";
 import {ViewOrderComponent} from "./components/pages/view/view-order/view-order.component";
-import {
-  CreateEditIngredientComponent
-} from "./components/pages/create-edit/create-edit-ingredient/create-edit-ingredient.component";
+import {CreateEditIngredientComponent} from "./components/pages/create-edit/create-edit-ingredient/create-edit-ingredient.component";
 import {ViewIngredientComponent} from "./components/pages/view/view-ingredient/view-ingredient.component";
+import {CreateEditMealComponent} from "./components/pages/create-edit/create-edit-meal/create-edit-meal.component";
+import {ViewMealComponent} from "./components/pages/view/view-meal/view-meal.component";
 
 const routes: Routes = [
   {
@@ -63,7 +63,24 @@ const routes: Routes = [
   },
   {
     path: 'meals',
-    component: MealsComponent
+    children: [
+      {
+        path: '',
+        component: MealsComponent
+      },
+      {
+        path: 'create',
+        component: CreateEditMealComponent
+      },
+      {
+        path: ':id/edit',
+        component: CreateEditMealComponent
+      },
+      {
+        path: ':id',
+        component: ViewMealComponent
+      },
+    ]
   },
   {
     path: 'ingredients',

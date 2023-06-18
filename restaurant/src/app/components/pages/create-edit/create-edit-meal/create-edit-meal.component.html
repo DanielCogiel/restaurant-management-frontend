@@ -1,0 +1,29 @@
+<form class="formgrid grid" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <div class="field col-12 md:col-6">
+    <label for="name">Name</label>
+    <input id="name" class="w-full" pInputText formControlName="name">
+  </div>
+  <div class="field col-12 md:col-6">
+    <label for="spiciness">Spiciness</label>
+    <select id="spiciness" class="w-full" pInputText formControlName="spiciness">
+      <option *ngFor="let spiciness of getSpicinessLevels()">{{spiciness}}</option>
+    </select>
+  </div>
+  <div class="field col-12 md:col-6">
+    <label for="dietType">Diet type</label>
+    <select id="dietType" class="w-full" pInputText formControlName="dietType">
+      <option *ngFor="let diet of getDietTypes()">{{diet}}</option>
+    </select>
+  </div>
+  <div class="field col-12 md:col-6">
+    <label for="ingredients">Meals</label>
+    <p-multiSelect
+      [options]="ingredients"
+      optionLabel="name"
+      styleClass="w-full"
+      formControlName="ingredients"
+      inputId="ingredients"
+    ></p-multiSelect>
+  </div>
+  <button class="p-button-raised ml-2" type="submit" pButton>{{isEdit ? 'Edit order' : 'Add order'}}</button>
+</form>

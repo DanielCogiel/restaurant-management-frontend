@@ -24,6 +24,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { CreateEditIngredientComponent } from './components/pages/create-edit/create-edit-ingredient/create-edit-ingredient.component';
 import { ViewIngredientComponent } from './components/pages/view/view-ingredient/view-ingredient.component';
 import {CheckboxModule} from "primeng/checkbox";
+import { CreateEditMealComponent } from './components/pages/create-edit/create-edit-meal/create-edit-meal.component';
+import { ViewMealComponent } from './components/pages/view/view-meal/view-meal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +39,9 @@ import {CheckboxModule} from "primeng/checkbox";
     CreateEditOrderComponent,
     ViewOrderComponent,
     CreateEditIngredientComponent,
-    ViewIngredientComponent
+    ViewIngredientComponent,
+    CreateEditMealComponent,
+    ViewMealComponent
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,44 @@
-<p>meals works!</p>
+
+<div class="flex align-items-center justify-content-between">
+  <h1>Meals</h1>
+  <button (click)="goToCreatePage()" pButton pRipple>Create a new meal</button>
+</div>
+<p-table
+  selectionMode="single"
+  [value]="elements"
+>
+  <ng-template pTemplate="header">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Spiciness</th>
+      <th>Diet type</th>
+      <th style="width: 5rem"></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-meal>
+    <tr (click)="goToSpecificElement(meal.id)">
+      <td>{{meal.id}}</td>
+      <td>{{meal.name}}</td>
+      <td>{{meal.spiciness}}</td>
+      <td>{{meal.dietType}}</td>
+      <td class="flex gap-2">
+        <button
+          type="button"
+          pButton
+          pRipple
+          icon="pi pi-pencil"
+          (click)="goToEditPage($event, meal.id)"
+        ></button>
+        <button
+          type="button"
+          pButton
+          pRipple
+          icon="pi pi-trash"
+          (click)="deleteElement($event, meal.id)"
+        ></button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+
