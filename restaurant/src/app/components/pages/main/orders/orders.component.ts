@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import OrderModel from "../../../interfaces/order.model";
-import {Crud} from "../../../interfaces/crud.abstract";
+import OrderModel from "../../../../interfaces/order.model";
+import {Crud} from "../../../../interfaces/crud.abstract";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({

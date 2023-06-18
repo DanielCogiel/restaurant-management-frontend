@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import CustomerModel from "../../../interfaces/customer.model";
-import {ApiService} from "../../../services/api.service";
+import CustomerModel from "../../../../interfaces/customer.model";
+import {ApiService} from "../../../../services/api.service";
 import {ActivatedRoute} from "@angular/router";
 import {first} from "rxjs";
 
