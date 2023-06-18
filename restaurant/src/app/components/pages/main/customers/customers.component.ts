@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import CustomerModel from "../../../interfaces/customer.model";
+import CustomerModel from "../../../../interfaces/customer.model";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Crud} from "../../../interfaces/crud.abstract";
+import {Crud} from "../../../../interfaces/crud.abstract";
 @Component({
   selector: 'app-customers',
   templateUrl: './customers.component.html',

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import OrderModel from "../../../interfaces/order.model";
+import OrderModel from "../../../../interfaces/order.model";
 import {ActivatedRoute} from "@angular/router";
-import {ApiService} from "../../../services/api.service";
+import {ApiService} from "../../../../services/api.service";
 import {first} from "rxjs";
 
 @Component({

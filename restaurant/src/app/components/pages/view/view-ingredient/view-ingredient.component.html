@@ -1,0 +1,8 @@
+<ng-container *ngIf="ingredient; else noIngredientTemplate" >
+  <p><strong>ID:</strong> {{ingredient.id}}</p>
+  <p><strong>Name:</strong> {{ingredient.name}}</p>
+  <p><strong>Gluten:</strong> {{ingredient.isGluten ? 'Yes' : 'No'}}</p>
+</ng-container>
+<ng-template #noIngredientTemplate>
+  <p>No such ingredient exists.</p>
+</ng-template>

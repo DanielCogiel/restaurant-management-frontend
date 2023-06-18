@@ -1,13 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {CustomersComponent} from "./components/pages/customers/customers.component";
-import {OrdersComponent} from "./components/pages/orders/orders.component";
-import {MealsComponent} from "./components/pages/meals/meals.component";
-import {IngredientsComponent} from "./components/pages/ingredients/ingredients.component";
-import {CreateEditCustomerComponent} from "./components/pages/create-edit-customer/create-edit-customer.component";
-import {ViewCustomerComponent} from "./components/pages/view-customer/view-customer.component";
-import {CreateEditOrderComponent} from "./components/pages/create-edit-order/create-edit-order.component";
-import {ViewOrderComponent} from "./components/pages/view-order/view-order.component";
+import {CustomersComponent} from "./components/pages/main/customers/customers.component";
+import {OrdersComponent} from "./components/pages/main/orders/orders.component";
+import {MealsComponent} from "./components/pages/main/meals/meals.component";
+import {IngredientsComponent} from "./components/pages/main/ingredients/ingredients.component";
+import {CreateEditCustomerComponent} from "./components/pages/create-edit/create-edit-customer/create-edit-customer.component";
+import {ViewCustomerComponent} from "./components/pages/view/view-customer/view-customer.component";
+import {CreateEditOrderComponent} from "./components/pages/create-edit/create-edit-order/create-edit-order.component";
+import {ViewOrderComponent} from "./components/pages/view/view-order/view-order.component";
+import {
+  CreateEditIngredientComponent
+} from "./components/pages/create-edit/create-edit-ingredient/create-edit-ingredient.component";
+import {ViewIngredientComponent} from "./components/pages/view/view-ingredient/view-ingredient.component";
 
 const routes: Routes = [
   {
@@ -63,7 +67,24 @@ const routes: Routes = [
   },
   {
     path: 'ingredients',
-    component: IngredientsComponent
+    children: [
+      {
+        path: '',
+        component: IngredientsComponent
+      },
+      {
+        path: 'create',
+        component: CreateEditIngredientComponent
+      },
+      {
+        path: ':id/edit',
+        component: CreateEditIngredientComponent
+      },
+      {
+        path: ':id',
+        component: ViewIngredientComponent
+      }
+    ]
   }
 ];
 

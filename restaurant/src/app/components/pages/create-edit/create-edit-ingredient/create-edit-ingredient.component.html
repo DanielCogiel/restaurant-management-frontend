@@ -1,0 +1,17 @@
+<form class="formgrid grid" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <div class="field col-12">
+    <label for="name">Name</label>
+    <input id="name" class="w-full" type="text" pInputText formControlName="name">
+  </div>
+  <div class="field col-12">
+  <p-checkbox
+    [binary]="true"
+    label="Gluten"
+    inputId="isGluten"
+    formControlName="isGluten"
+    styleClass="w-full"
+    value="{{formGroup.value.isGluten}}"
+  ></p-checkbox>
+  </div>
+  <button class="p-button-raised ml-2" type="submit" pButton>{{isEdit ? 'Edit customer' : 'Add customer'}}</button>
+</form>

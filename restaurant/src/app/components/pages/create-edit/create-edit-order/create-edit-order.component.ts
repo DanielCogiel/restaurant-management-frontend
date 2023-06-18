@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Params} from "@angular/router";
 import {first} from "rxjs";
-import CustomerModel from "../../../interfaces/customer.model";
-import {MealModel} from "../../../interfaces/meal.model";
+import CustomerModel from "../../../../interfaces/customer.model";
+import {MealModel} from "../../../../interfaces/meal.model";
 
 @Component({
   selector: 'app-create-edit-order',
