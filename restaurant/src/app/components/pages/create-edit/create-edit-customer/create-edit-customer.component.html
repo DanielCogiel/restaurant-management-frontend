@@ -1,4 +1,4 @@
-<form class="formgrid grid" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+<form *ngIf="!loading; else loadingTemplate" class="formgrid grid" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
   <div class="field col-12 md:col-5">
     <label for="name">Name</label>
     <input id="name" class="w-full" type="text" pInputText formControlName="name">
@@ -13,3 +13,9 @@
   </div>
   <button class="p-button-raised ml-2" type="submit" pButton>{{isEdit ? 'Edit customer' : 'Add customer'}}</button>
 </form>
+
+<ng-template #loadingTemplate>
+  <div class="flex justify-content-center">
+    <p-progressSpinner></p-progressSpinner>
+  </div>
+</ng-template>

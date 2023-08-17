@@ -1,11 +1,11 @@
-
-  <div class="flex align-items-center justify-content-between">
+<div class="flex align-items-center justify-content-between">
     <h1>Customers</h1>
     <button (click)="goToCreatePage()" pButton pRipple>Create a new customer</button>
   </div>
   <p-table
+    *ngIf="!loading; else loadingTemplate"
     selectionMode="single"
-    [value]="elements"
+    [value]="customers || []"
   >
     <ng-template pTemplate="header">
       <tr>
@@ -42,3 +42,8 @@
     </ng-template>
   </p-table>
 
+<ng-template #loadingTemplate>
+  <div class="flex justify-content-center">
+    <p-progressSpinner></p-progressSpinner>
+  </div>
+</ng-template>

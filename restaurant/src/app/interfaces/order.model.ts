@@ -4,6 +4,6 @@ import {MealModel} from "./meal.model";
 interface OrderModel {
   id: number,
   customer?: CustomerModel,
-  meals: MealModel[]
+  meals?: MealModel[]
 }
 export default OrderModel;

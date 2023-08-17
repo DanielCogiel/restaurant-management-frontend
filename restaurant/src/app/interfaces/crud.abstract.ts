@@ -3,7 +3,6 @@ import {ActivatedRoute, Router} from "@angular/router";
 
 @Injectable()
 export abstract class Crud<T> {
-  elements!: T []
   protected constructor(private _router: Router, private _activatedRoute: ActivatedRoute) {}
   abstract deleteElement(event: Event, id: number): void;
   goToEditPage(event: Event, id: number): void {

@@ -26,6 +26,7 @@ import { ViewIngredientComponent } from './components/pages/view/view-ingredient
 import {CheckboxModule} from "primeng/checkbox";
 import { CreateEditMealComponent } from './components/pages/create-edit/create-edit-meal/create-edit-meal.component';
 import { ViewMealComponent } from './components/pages/view/view-meal/view-meal.component';
+import {ProgressSpinnerModule} from "primeng/progressspinner";
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,20 +44,21 @@ import { ViewMealComponent } from './components/pages/view/view-meal/view-meal.c
     CreateEditMealComponent,
     ViewMealComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ButtonModule,
-    CardModule,
-    TableModule,
-    RippleModule,
-    InputTextModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    MultiSelectModule,
-    BrowserAnimationsModule,
-    CheckboxModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ButtonModule,
+        CardModule,
+        TableModule,
+        RippleModule,
+        InputTextModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        MultiSelectModule,
+        BrowserAnimationsModule,
+        CheckboxModule,
+        ProgressSpinnerModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

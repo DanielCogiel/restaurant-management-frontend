@@ -9,7 +9,7 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent extends Crud<OrderModel> {
-  override elements: OrderModel[] = [
+  elements: OrderModel[] = [
     {
       id: 1,
       customer: {

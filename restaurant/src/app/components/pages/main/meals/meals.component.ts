@@ -11,7 +11,7 @@ import {DietType} from "../../../../interfaces/diet-type.enum";
   styleUrls: ['./meals.component.scss']
 })
 export class MealsComponent extends Crud<MealModel>{
-  override elements: MealModel[] = [
+  elements: MealModel[] = [
     {
       id: 1,
       name: 'Potrawka',

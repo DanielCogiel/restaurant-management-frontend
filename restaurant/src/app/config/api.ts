@@ -1,1 +1,1 @@
-export const SERVER_URL: string = 'http://localhost:8080';
+export const API_URL: string = 'http://localhost:8080/take';

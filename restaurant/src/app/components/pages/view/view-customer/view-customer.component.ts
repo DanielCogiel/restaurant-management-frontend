@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import CustomerModel from "../../../../interfaces/customer.model";
 import {ApiService} from "../../../../services/api.service";
 import {ActivatedRoute} from "@angular/router";
-import {first} from "rxjs";
+import {first, map, tap} from "rxjs";
 
 @Component({
   selector: 'app-view-customer',
@@ -11,28 +11,24 @@ import {first} from "rxjs";
 })
 export class ViewCustomerComponent {
   customer?: CustomerModel
+  loading: boolean = true;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private apiService: ApiService
   ) {
     this.activatedRoute.params.pipe(first()).subscribe(params => {
-      this.customer = {
-        id: params['id'],
-        name: 'Daniel',
-        surname: 'Nowak',
-        table_number: 3,
-        orders: [
-          {
-            id: 1,
-            meals: []
+      this.apiService.get(`/customers/${params['id']}`)
+        .pipe(
+          tap(() => this.loading = true),
+          first(),
+          map(response => response.body as CustomerModel)
+        )
+        .subscribe(customer => {
+          this.customer = customer;
+          this.loading = false;
           },
-          {
-            id: 2,
-            meals: []
-          }
-        ]
-      }
+          error => this.loading = false)
     })
   }
 }
