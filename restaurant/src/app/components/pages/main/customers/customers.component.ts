@@ -48,7 +48,8 @@ export class CustomersComponent extends Crud<CustomerModel>{
       )
       .subscribe(customers => {
         this.loading = false;
-        this.customers = customers;
+        this.customers = customers?.sort(
+          (cust1, cust2) => cust1.id - cust2.id) || [];
       }, error => {
         console.error(error);
         this.loading = false;

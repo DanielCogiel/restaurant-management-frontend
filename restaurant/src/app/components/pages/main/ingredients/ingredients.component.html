@@ -5,7 +5,7 @@
 </div>
 <p-table
   selectionMode="single"
-  [value]="elements"
+  [value]="ingredients || []"
 >
   <ng-template pTemplate="header">
     <tr>
@@ -19,7 +19,7 @@
     <tr (click)="goToSpecificElement(ingredient.id)">
       <td>{{ingredient.id}}</td>
       <td>{{ingredient.name}}</td>
-      <td>{{ingredient.isGluten ? 'Yes' : 'No'}}</td>
+      <td>{{ingredient.gluten ? 'Yes' : 'No'}}</td>
       <td class="flex gap-2">
         <button
           type="button"

@@ -19,21 +19,21 @@ export class CreateEditMealComponent {
     ingredients: new FormControl<IngredientModel[] | null>(null, [Validators.required])
   })
   ingredients: IngredientModel[] = [
-    {
-      id: 1,
-      name: "Kasza",
-      isGluten: false
-    },
-    {
-      id: 3,
-      name: "Mięso",
-      isGluten: false
-    },
-    {
-      id: 4,
-      name: "Chleb",
-      isGluten: true
-    }
+    // {
+    //   id: 1,
+    //   name: "Kasza",
+    //   isGluten: false
+    // },
+    // {
+    //   id: 3,
+    //   name: "Mięso",
+    //   isGluten: false
+    // },
+    // {
+    //   id: 4,
+    //   name: "Chleb",
+    //   isGluten: true
+    // }
   ]
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -50,16 +50,16 @@ export class CreateEditMealComponent {
             spiciness: [SpicinessLevel.LOW, [Validators.required]],
             dietType: [DietTypeEnum.REGULAR, [Validators.required]],
             ingredients: [[
-              {
-                id: 1,
-                name: "Kasza",
-                isGluten: false
-              },
-              {
-                id: 3,
-                name: "Mięso",
-                isGluten: false
-              }
+              // {
+              //   id: 1,
+              //   name: "Kasza",
+              //   isGluten: false
+              // },
+              // {
+              //   id: 3,
+              //   name: "Mięso",
+              //   isGluten: false
+              // }
             ], [Validators.required]]
           });
         }

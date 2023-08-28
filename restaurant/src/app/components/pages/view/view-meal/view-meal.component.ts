@@ -22,16 +22,16 @@ export class ViewMealComponent {
         spiciness: "Medium",
         dietType: "Vegetarian",
         ingredients: [
-          {
-            id: 1,
-            name: "Ser",
-            isGluten: false
-          },
-          {
-            id: 3,
-            name: "Pomidor",
-            isGluten: false
-          }
+          // {
+          //   id: 1,
+          //   name: "Ser",
+          //   isGluten: false
+          // },
+          // {
+          //   id: 3,
+          //   name: "Pomidor",
+          //   isGluten: false
+          // }
         ]
       }
     })

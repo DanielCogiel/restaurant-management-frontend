@@ -45,6 +45,8 @@ export class CreateEditCustomerComponent {
               this.customerId = customer?.id;
               this.loading = false;
             }, error => this.loading = false)
+        } else {
+          this.loading = false;
         }
       })
   }

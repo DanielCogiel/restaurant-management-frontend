@@ -6,6 +6,6 @@ export interface IngredientModel {
   name: string,
   // amount: number,
   // unit: Unit;
-  isGluten: boolean,
+  gluten: boolean,
   // meals?: MealModel[]
 }

@@ -1,8 +1,15 @@
-<ng-container *ngIf="ingredient; else noIngredientTemplate" >
-  <p><strong>ID:</strong> {{ingredient.id}}</p>
-  <p><strong>Name:</strong> {{ingredient.name}}</p>
-  <p><strong>Gluten:</strong> {{ingredient.isGluten ? 'Yes' : 'No'}}</p>
+<ng-container *ngIf="!loading; else loadingTemplate" >
+  <ng-container *ngIf="ingredient; else noIngredientTemplate" >
+    <p><strong>ID:</strong> {{ingredient.id}}</p>
+    <p><strong>Name:</strong> {{ingredient.name}}</p>
+    <p><strong>Gluten:</strong> {{ingredient.gluten ? 'Yes' : 'No'}}</p>
+  </ng-container>
+  <ng-template #noIngredientTemplate>
+    <p>No such ingredient exists.</p>
+  </ng-template>
 </ng-container>
-<ng-template #noIngredientTemplate>
-  <p>No such ingredient exists.</p>
+<ng-template #loadingTemplate>
+  <div class="flex justify-content-center">
+    <p-progressSpinner></p-progressSpinner>
+  </div>
 </ng-template>
