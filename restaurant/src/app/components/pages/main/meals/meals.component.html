@@ -4,8 +4,9 @@
   <button (click)="goToCreatePage()" pButton pRipple>Create a new meal</button>
 </div>
 <p-table
+  *ngIf="!loading; else loadingTemplate"
   selectionMode="single"
-  [value]="elements"
+  [value]="meals || []"
 >
   <ng-template pTemplate="header">
     <tr>
@@ -42,3 +43,8 @@
   </ng-template>
 </p-table>
 
+<ng-template #loadingTemplate>
+  <div class="flex justify-content-center">
+    <p-progressSpinner></p-progressSpinner>
+  </div>
+</ng-template>

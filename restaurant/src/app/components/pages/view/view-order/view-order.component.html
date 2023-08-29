@@ -1,6 +1,6 @@
 <ng-container *ngIf="order; else noOrderTemplate" >
   <p><strong>ID:</strong> {{order.id}}</p>
-  <p><strong>Customer:</strong> {{order.customer?.name + ' ' + order.customer?.surname + ', table: ' + order.customer?.table_number}}</p>
+  <p><strong>Customer ID:</strong> {{order.customerId}}</p>
   <p><strong>Meals:</strong></p>
   <ul>
     <li *ngFor="let meal of order.meals">

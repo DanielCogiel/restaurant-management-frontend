@@ -3,7 +3,7 @@ import {MealModel} from "./meal.model";
 
 interface OrderModel {
   id: number,
-  customer?: CustomerModel,
+  customerId?: number,
   meals?: MealModel[]
 }
 export default OrderModel;

@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import OrderModel from "../../../../interfaces/order.model";
 import {ActivatedRoute} from "@angular/router";
 import {ApiService} from "../../../../services/api.service";
-import {first} from "rxjs";
+import {first, map, tap} from "rxjs";
+import CustomerModel from "../../../../interfaces/customer.model";
 
 @Component({
   selector: 'app-view-order',
@@ -11,35 +12,24 @@ import {first} from "rxjs";
 })
 export class ViewOrderComponent {
   order?: OrderModel;
+  loading: boolean = true;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private apiService: ApiService
   ) {
     this.activatedRoute.params.pipe(first()).subscribe(params => {
-      this.order = {
-        id: params['id'],
-        customer: {
-          id: 1,
-          name: 'Daniel',
-          surname: 'Nowak',
-          table_number: 5
-        },
-        meals: [
-          {
-            id: 2,
-            name: 'Kaszanka',
-            spiciness: "Low",
-            dietType: "Regular"
+      this.apiService.get(`/orders/${params['id']}`)
+        .pipe(
+          tap(() => this.loading = true),
+          first(),
+          map(response => response.body as OrderModel)
+        )
+        .subscribe(order => {
+            this.order = order;
+            this.loading = false;
           },
-          {
-            id: 5,
-            name: 'Rosół',
-            spiciness: "Low",
-            dietType: "Regular"
-          }
-        ]
-      }
+          error => this.loading = false)
     })
   }
 }

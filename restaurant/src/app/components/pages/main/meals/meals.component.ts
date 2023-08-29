@@ -4,6 +4,10 @@ import {Crud} from "../../../../interfaces/crud.abstract";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Spiciness} from "../../../../interfaces/spiciness.enum";
 import {DietType} from "../../../../interfaces/diet-type.enum";
+import {HttpHeaders} from "@angular/common/http";
+import {IngredientModel} from "../../../../interfaces/ingredient.model";
+import {first, map, tap} from "rxjs";
+import {ApiService} from "../../../../services/api.service";
 
 @Component({
   selector: 'app-meals',
@@ -11,41 +15,48 @@ import {DietType} from "../../../../interfaces/diet-type.enum";
   styleUrls: ['./meals.component.scss']
 })
 export class MealsComponent extends Crud<MealModel>{
-  elements: MealModel[] = [
-    {
-      id: 1,
-      name: 'Potrawka',
-      spiciness: "Medium",
-      dietType: "Regular"
-    },
-    {
-      id: 3,
-      name: 'Ramen',
-      spiciness: "High",
-      dietType: "Vegetarian"
-    },
-    {
-      id: 5,
-      name: 'Pizza Vege',
-      spiciness: "Low",
-      dietType: "Vegan"
-    },
-    {
-      id: 2,
-      name: 'Hamburger',
-      spiciness: "Low",
-      dietType: "Regular"
-    }
-  ]
+  meals: MealModel[] | null = [];
+  loading: boolean = true;
   constructor(
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private apiService: ApiService
   ) {
-    super(router, activatedRoute)
+    super(router, activatedRoute);
+    this.refresh();
   }
-  override deleteElement(event: Event, id: number) {
+  deleteElement(event: Event, id: number) {
     event.stopPropagation();
     event.preventDefault();
-    console.log(`Deleted meal number ${id}`)
+    this.apiService.delete(`/meals/${id}/delete`)
+      .pipe(
+        tap(() => this.loading = true),
+        first()
+      )
+      .subscribe(response => {
+        if (response.ok && response.status === 200) {
+          this.refresh();
+        } else {
+          this.loading = false;
+        }
+      })
+  }
+  refresh() {
+    let headers: HttpHeaders = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    this.apiService.get<MealModel[]>('/meals', headers)
+      .pipe(
+        tap(() => this.loading = true),
+        first(),
+        map(response => response.body),
+      )
+      .subscribe(meals => {
+        this.loading = false;
+        this.meals = meals?.sort(
+          (meal1, meal2) => meal1.id - meal2.id) || [];
+      }, error => {
+        console.error(error);
+        this.loading = false;
+      })
   }
 }

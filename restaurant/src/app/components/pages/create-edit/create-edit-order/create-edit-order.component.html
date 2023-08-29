@@ -2,14 +2,15 @@
   <div class="field col-12 md:col-6">
     <label for="userId">Customer</label>
     <select id="userId" class="w-full" pInputText formControlName="userId">
-      <option *ngFor="let customer of customers" [value]="customer.id" >{{customer.name + ' ' +  customer.surname}}</option>
+      <option *ngFor="let customer of (customers$ | async)" [value]="customer.id" >{{customer.name + ' ' +  customer.surname}}</option>
     </select>
   </div>
   <div class="field col-12 md:col-6">
     <label for="meals">Meals</label>
     <p-multiSelect
-      [options]="meals"
+      [options]="(meals$ | async) || []"
       optionLabel="name"
+      optionValue="id"
       styleClass="w-full"
       formControlName="meals"
       inputId="meals"></p-multiSelect>

@@ -62,10 +62,7 @@ export class CreateEditCustomerComponent {
               this.router.navigate(['/customers']);
           })
       } else {
-        this.apiService.put('/customers', {
-          id: this.customerId,
-          ...this.formGroup.value
-        })
+        this.apiService.put(`/customers/${this.customerId}/edit`, this.formGroup.value)
           .pipe(
             first()
           )

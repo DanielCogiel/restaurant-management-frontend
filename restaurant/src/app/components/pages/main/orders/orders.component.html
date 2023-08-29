@@ -4,22 +4,19 @@
   <button (click)="goToCreatePage()" pButton pRipple>Create a new order</button>
 </div>
 <p-table
+  *ngIf="!loading; else loadingTemplate"
   selectionMode="single"
-  [value]="elements"
+  [value]="orders || []"
 >
   <ng-template pTemplate="header">
     <tr>
       <th>ID</th>
-      <th>Customer</th>
-      <th>Table number</th>
       <th style="width: 5rem"></th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-order>
     <tr (click)="goToSpecificElement(order.id)">
       <td>{{order.id}}</td>
-      <td>{{ order.customer.name + ' ' + order.customer.surname }}</td>
-      <td>{{order.customer.table_number}}</td>
       <td class="flex gap-2">
         <button
           type="button"
@@ -40,3 +37,8 @@
   </ng-template>
 </p-table>
 
+<ng-template #loadingTemplate>
+  <div class="flex justify-content-center">
+    <p-progressSpinner></p-progressSpinner>
+  </div>
+</ng-template>
