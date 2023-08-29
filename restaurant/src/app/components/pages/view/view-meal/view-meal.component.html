@@ -5,7 +5,7 @@
   <p><strong>Diet type:</strong> {{meal.dietType}}</p>
   <ul>
     <li *ngFor="let ingredient of meal.ingredients">
-      <strong>ID:</strong> {{ingredient.id}}, <strong>Name:</strong> {{ingredient.name}}, <strong>Gluten:</strong> {{ingredient.gluten ? 'Yes' : 'No'}}
+      <strong>Name:</strong> {{ingredient.name}}, <strong>Gluten:</strong> {{ingredient.gluten ? 'Yes' : 'No'}}
     </li>
   </ul>
 </ng-container>

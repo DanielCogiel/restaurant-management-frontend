@@ -1,5 +1,5 @@
-<form class="formgrid grid" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-  <div class="field col-12 md:col-6">
+<form class="formgrid grid" [formGroup]="formGroup">
+  <div class="field col-12">
     <label for="name">Name</label>
     <input id="name" class="w-full" pInputText formControlName="name">
   </div>
@@ -15,15 +15,47 @@
       <option *ngFor="let diet of getDietTypes()">{{diet}}</option>
     </select>
   </div>
-  <div class="field col-12 md:col-6">
-    <label for="ingredients">Meals</label>
-    <p-multiSelect
-      [options]="ingredients"
-      optionLabel="name"
-      styleClass="w-full"
-      formControlName="ingredients"
-      inputId="ingredients"
-    ></p-multiSelect>
+  <div *ngIf="!isEdit" class="flex">
+    <div class="col-12 md:col-6">
+      <h2 class="w-full">Ingredients</h2>
+    </div>
+    <div class="col-12 md:col-6">
+      <button (click)="addNewIngredient()" class="p-button-raised mt-2 w-full" type="submit" pButton>New ingredient</button>
+    </div>
   </div>
-  <button class="p-button-raised ml-2" type="submit" pButton>{{isEdit ? 'Edit order' : 'Add order'}}</button>
+  <ng-container *ngIf="!isEdit" formArrayName="ingredients">
+    <div
+      *ngFor="let ingredient of ingredients; let i = index"
+      class="formgrid w-full grid align-items-end"
+    >
+      <ng-container [formGroup]="ingredient">
+      <div class="field col-12 md:col-4">
+        <label for="ingredientId">Ingredient ID</label>
+        <select id="ingredientId" class="w-full" pInputText formControlName="ingredientId">
+          <option *ngFor="let ingredient of (ingredients$ | async)" [value]="ingredient.id" >{{ingredient.id + ': ' + ingredient.name}}</option>
+        </select>
+      </div>
+      <div class="field col-12 md:col-4">
+        <label for="amount">Amount</label>
+        <input id="amount" class="w-full" type="number" pInputText formControlName="amount">
+      </div>
+      <div class="field col-12 md:col-3">
+        <label for="unit">Unit</label>
+        <select id="unit" class="w-full" pInputText formControlName="unit">
+          <option *ngFor="let unit of getUnits()" >{{unit}}</option>
+        </select>
+      </div>
+      <div class="field col-12 md:col-1">
+        <button
+          type="button"
+          pButton
+          pRipple
+          icon="pi pi-trash"
+          (click)="removeIngredient(i)"
+        ></button>
+      </div>
+      </ng-container>
+    </div>
+  </ng-container>
+  <button (click)="onSubmit()" class="w-full p-button-raised mt-2 ml-2 col-12" type="submit" pButton>{{isEdit ? 'Edit order' : 'Add order'}}</button>
 </form>

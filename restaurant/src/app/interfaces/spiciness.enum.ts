@@ -1,6 +1,6 @@
 export type Spiciness = 'Low' | 'Medium' | 'High'
 export enum SpicinessLevel {
-  LOW = 'Low',
-  MEDIUM = 'Medium',
-  HIGH = 'High'
+  LOW = 'LOW',
+  MEDIUM = 'MEDIUM',
+  HIGH = 'HIGH'
 }
